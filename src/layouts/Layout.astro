@@ -1,0 +1,105 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="ByteFlow - Swiss Blockchain Solutions for Staking, Swaps, and Key Management" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/logo.png" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+	</head>
+	<body class="bg-black">
+		<div class="glitch-overlay fixed inset-0 pointer-events-none"></div>
+		<div class="matrix-grid fixed inset-0 pointer-events-none opacity-20"></div>
+		<slot />
+	</body>
+</html>
+<style is:global>
+	:root {
+		--neon-green: #00FF94;
+		--neon-pink: #FF00E5;
+		--dark-bg: #000000;
+	}
+	
+	html {
+		font-family: 'Orbitron', sans-serif;
+		background: var(--dark-bg);
+		color-scheme: dark;
+	}
+
+	.matrix-grid {
+		background: 
+			linear-gradient(90deg, rgba(0, 255, 148, 0.1) 1px, transparent 1px),
+			linear-gradient(0deg, rgba(0, 255, 148, 0.1) 1px, transparent 1px);
+		background-size: 30px 30px;
+		mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+	}
+
+	.glitch-overlay::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: repeating-linear-gradient(
+			transparent 0%,
+			rgba(0, 255, 148, 0.1) 0.5%,
+			transparent 1%
+		);
+		animation: glitch 2s infinite;
+		opacity: 0.5;
+	}
+
+	@keyframes glitch {
+		0% { transform: translateX(0) }
+		25% { transform: translateX(-1%) }
+		50% { transform: translateX(1%) }
+		75% { transform: translateX(-2%) }
+		100% { transform: translateX(0) }
+	}
+
+	.neo-brutalist {
+		position: relative;
+		&::before {
+			content: '';
+			position: absolute;
+			inset: 0;
+			background: linear-gradient(45deg, var(--neon-green), var(--neon-pink));
+			transform: translate(4px, 4px);
+			z-index: -1;
+		}
+	}
+
+	.glitch-text {
+		position: relative;
+		&::before,
+		&::after {
+			content: attr(data-text);
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+		&::before {
+			color: var(--neon-pink);
+			transform: translateX(-2px);
+			clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+		}
+		&::after {
+			color: var(--neon-green);
+			transform: translateX(2px);
+			clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+		}
+	}
+</style>

@@ -1,0 +1,44 @@
+---
+const services = [
+  {
+    title: "QUANTUM STAKING",
+    description: "Military-grade staking protocols with AI-optimized yield generation matrix.",
+    icon: "M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
+  },
+  {
+    title: "NEURAL SWAPS",
+    description: "Zero-latency cross-chain bridge powered by quantum tunneling technology.",
+    icon: "M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"
+  },
+  {
+    title: "CYBER VAULT",
+    description: "Quantum-encrypted key management with Swiss banking-grade security.",
+    icon: "M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+  }
+];
+---
+
+<section id="services" class="py-32 relative">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-6xl font-black text-center mb-24 tracking-tight">
+      <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00FF94] to-[#FF00E5]">
+        SYSTEM MODULES
+      </span>
+    </h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+      {services.map(service => (
+        <div class="neo-brutalist bg-black p-8 hover:transform hover:scale-105 transition-all duration-300">
+          <div class="mb-8 relative">
+            <svg class="w-16 h-16 text-[#00FF94]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d={service.icon}></path>
+            </svg>
+            <div class="absolute inset-0 blur-xl bg-[#00FF94] opacity-20"></div>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-4 tracking-wider">{service.title}</h3>
+          <p class="text-[#00FF94]/80 leading-relaxed font-light">{service.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
